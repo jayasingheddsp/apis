@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 26, 2016 6:20:54 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hmap.Flight" table="flight" catalog="swdb2" optimistic-lock="version">
+        <composite-id name="id" class="hmap.FlightId">
+            <key-property name="flightNo" type="string">
+                <column name="Flight_No" length="10" />
+            </key-property>
+            <key-property name="flightDate" type="date">
+                <column name="Flight_Date" length="10" />
+            </key-property>
+        </composite-id>
+        <property name="totalPassengers" type="int">
+            <column name="Total_Passengers" not-null="true" />
+        </property>
+        <property name="totalCrew" type="int">
+            <column name="Total_Crew" not-null="true" />
+        </property>
+        <property name="arrivalPort" type="string">
+            <column name="Arrival_Port" length="10" not-null="true" />
+        </property>
+        <property name="departurePort" type="string">
+            <column name="Departure_Port" length="10" not-null="true" />
+        </property>
+        <property name="dtFlightArrDate" type="date">
+            <column name="DtFlight_Arr_Date" length="10" not-null="true" />
+        </property>
+        <property name="dtFlightDepDate" type="date">
+            <column name="DtFlight_Dep_Date" length="10" not-null="true" />
+        </property>
+        <property name="flightDirection" type="string">
+            <column name="Flight_Direction" length="20" not-null="true" />
+        </property>
+        <property name="messageType" type="string">
+            <column name="Message_Type" length="5" not-null="true" />
+        </property>
+        <set name="passengers" table="passenger" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Flight_No" length="10" not-null="true" />
+                <column name="Flight_Date" length="10" not-null="true" />
+            </key>
+            <one-to-many class="hmap.Passenger" />
+        </set>
+        <set name="crews" table="crew" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Flight_No" length="10" not-null="true" />
+                <column name="Flight_Date" length="10" not-null="true" />
+            </key>
+            <one-to-many class="hmap.Crew" />
+        </set>
+    </class>
+</hibernate-mapping>

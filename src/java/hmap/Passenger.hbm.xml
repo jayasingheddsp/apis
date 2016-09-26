@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 26, 2016 6:20:54 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hmap.Passenger" table="passenger" catalog="swdb2" optimistic-lock="version">
+        <composite-id name="id" class="hmap.PassengerId">
+            <key-property name="flightNo" type="string">
+                <column name="Flight_No" length="10" />
+            </key-property>
+            <key-property name="flightDate" type="date">
+                <column name="Flight_Date" length="10" />
+            </key-property>
+            <key-property name="travelDocNumber" type="string">
+                <column name="Travel_Doc_Number" length="10" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="flight" class="hmap.Flight" update="false" insert="false" fetch="select">
+            <column name="Flight_No" length="10" not-null="true" />
+            <column name="Flight_Date" length="10" not-null="true" />
+        </many-to-one>
+        <property name="paxType" type="string">
+            <column name="Pax_Type" length="5" not-null="true" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="First_Name" length="100" not-null="true" />
+        </property>
+        <property name="middleName" type="string">
+            <column name="Middle_Name" length="100" />
+        </property>
+        <property name="surname" type="string">
+            <column name="Surname" length="100" not-null="true" />
+        </property>
+        <property name="gender" type="string">
+            <column name="Gender" length="45" not-null="true" />
+        </property>
+        <property name="nationality" type="string">
+            <column name="Nationality" length="45" not-null="true" />
+        </property>
+        <property name="travelDocType" type="string">
+            <column name="Travel_Doc_Type" length="10" not-null="true" />
+        </property>
+        <property name="dtTdExpiryDate" type="date">
+            <column name="DtTdExpiry_Date" length="10" not-null="true" />
+        </property>
+        <property name="placeTdIssue" type="string">
+            <column name="Place_TD_Issue" length="10" not-null="true" />
+        </property>
+        <property name="dateOfBirth" type="date">
+            <column name="Date_of_Birth" length="10" not-null="true" />
+        </property>
+        <property name="portClearance" type="string">
+            <column name="Port_Clearance" length="10" />
+        </property>
+        <property name="embPort" type="string">
+            <column name="Emb_Port" length="10" not-null="true" />
+        </property>
+        <property name="disEmbPort" type="string">
+            <column name="DisEmb_Port" length="10" not-null="true" />
+        </property>
+        <property name="resRef" type="string">
+            <column name="Res_Ref" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

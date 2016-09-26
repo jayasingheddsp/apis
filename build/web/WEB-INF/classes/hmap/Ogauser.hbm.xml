@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 26, 2016 6:20:54 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="hmap.Ogauser" table="ogauser" catalog="swdb2" optimistic-lock="version">
+        <id name="username" type="string">
+            <column name="username" length="45" />
+            <generator class="assigned" />
+        </id>
+        <property name="commonname" type="string">
+            <column name="commonname" length="45" not-null="true" />
+        </property>
+        <property name="agencyname" type="string">
+            <column name="agencyname" length="45" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="45" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="45" not-null="true" />
+        </property>
+        <property name="agencycode" type="string">
+            <column name="agencycode" length="45" />
+        </property>
+        <property name="phone" type="string">
+            <column name="phone" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>
